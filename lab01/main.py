@@ -1,10 +1,10 @@
 import random
 
-def Student_list(txt_file):
+def Student_list(txt_file):   # getting student list
     
     try:
         with open(txt_file, 'r') as file:
-            student_ids = [line.strip() for line in file if line.strip()]
+            student_ids = [line.strip() for line in file if line.strip()] #get list and store 
         return student_ids
     except FileNotFoundError:
         print(f"Error: The file '{txt_file}' was not found.")
@@ -12,9 +12,10 @@ def Student_list(txt_file):
 
 def viva_selection(student_ids):
     
-    org_list = student_ids[:]
+    org_list = student_ids[:] # for resetting student list
     num = 1
 
+    #select random student and remove selected student from list
     while student_ids:
         selected = random.choice(student_ids)
         print(f"Student No.{num}: {selected}")
@@ -22,7 +23,7 @@ def viva_selection(student_ids):
         num += 1
 
 
-    print("\nAll students have been selected for viva.\nResetting the list.")
+    print("\nAll students have been selected for viva.\n")
     return org_list  
 
 def main():
@@ -32,7 +33,7 @@ def main():
     if student_ids:       
         student_ids = viva_selection(student_ids)
 
-        while True:
+        while True:      #additional part, gives user an option
 
             print("\nStudent list has been reset. Ready for another round.")
             print("would you like to start another round ?")
