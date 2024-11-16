@@ -1,6 +1,6 @@
 import random
 import math
-import matphilotlib.pyplot as pyp
+import matplotlib.pyplot as pyp
 
 
 print("hello")
