@@ -87,6 +87,27 @@ def depthFirstSearch(problem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
+    from util import Stack
+
+    start = problem.getStartState()
+    frontier = Stack()  # Use a stack for DFS
+    frontier.push((start, []))  # Stack stores (state, path)
+    explored = set()
+
+    while not frontier.isEmpty():
+        current_state, path = frontier.pop()
+
+        if problem.isGoalState(current_state):
+            return path
+
+        if current_state not in explored:
+            explored.add(current_state)
+
+            for successor, action, _ in problem.getSuccessors(current_state):
+                if successor not in explored:
+                    frontier.push((successor, path + [action]))
+
+    return []  # No solution found
     util.raiseNotDefined()
 
 def breadthFirstSearch(problem):
